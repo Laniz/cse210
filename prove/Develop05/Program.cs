@@ -7,10 +7,14 @@ class Program
         Console.WriteLine("Welcome to the Mindfulness Program!");
 
         // Display menu options
+        Console.WriteLine(" ");
         Console.WriteLine("Select an activity:");
+        Console.WriteLine(" ");
         Console.WriteLine("1. Breathing Activity");
         Console.WriteLine("2. Reflection Activity");
         Console.WriteLine("3. Listing Activity");
+        Console.WriteLine("4. Quit");
+        Console.WriteLine(" ");
 
         // Get user input for activity selection
         int choice = GetMenuChoice();
@@ -26,6 +30,8 @@ class Program
                 break;
             case 3:
                 DoListingActivity();
+                break;
+            case 4:
                 break;
             default:
                 Console.WriteLine("Invalid choice. Please select a number from the menu.");

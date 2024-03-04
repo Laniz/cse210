@@ -1,7 +1,7 @@
 using System;
+using System.Collections.Generic;
 using System.Threading;
 
-// Listing activity class
 class ListingActivity : MindfulnessActivity
 {
     private string[] prompts = { "Who are people that you appreciate?",
@@ -17,44 +17,54 @@ class ListingActivity : MindfulnessActivity
     {
         Start();
         Console.WriteLine("This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.");
+        Console.WriteLine("  ");
         
         Random rand = new Random();
         string prompt = prompts[rand.Next(prompts.Length)];
+        Console.WriteLine($"You have {duration} seconds to list as many items as you can.");
         Console.WriteLine($"Prompt: {prompt}");
         
-        Console.WriteLine($"You have {duration} seconds to list as many items as you can.");
-        Console.WriteLine("Get ready to begin...");
-        Thread.Sleep(3000); // Pause for 3 seconds to prepare
+        
+        
+        // Console.WriteLine("Get ready to begin...");
+        // Thread.Sleep(3000); // Pause for 3 seconds to prepare
         
         // Countdown before listing items
-        Console.WriteLine("Starting in 3...");
-        Thread.Sleep(1000); // Pause for 1 second
-        Console.WriteLine("2...");
-        Thread.Sleep(1000); // Pause for 1 second
-        Console.WriteLine("1...");
-        Thread.Sleep(1000); // Pause for 1 second
-        Console.WriteLine("Start listing!");
+        // Console.WriteLine("Starting in 3...");
+        // Thread.Sleep(1000); // Pause for 1 second
+        // Console.WriteLine("2...");
+        // Thread.Sleep(1000); // Pause for 1 second
+        // Console.WriteLine("1...");
+        // Thread.Sleep(1000); // Pause for 1 second
+        // Console.WriteLine("Start listing!");
         
         // Start listing items
         DateTime startTime = DateTime.Now;
-        int itemCount = 0;
+        List<string> lines = new List<string>();
         while ((DateTime.Now - startTime).TotalSeconds < duration)
         {
-             
+            string line = Console.ReadLine();
+            lines.Add(line);
+
+            // Update the remaining time
+            TimeSpan remainingTime = TimeSpan.FromSeconds(duration - (DateTime.Now - startTime).TotalSeconds);
             
-            
-            string promptss = prompts[rand.Next(prompts.Length)];
-            Console.WriteLine($"Prompt: {promptss}");
-            Console.WriteLine($"You have ({5} seconds)\r");
-            Thread.Sleep(5000);
-            
-            Console.WriteLine(" ");
-            
+            Console.WriteLine("");
+
+            // Thread.Sleep(5000); // Pause for 5 seconds before the next prompt
+            Console.Clear();
+            Console.WriteLine($"You have ({remainingTime.TotalSeconds:F2} seconds) remaining.");
+            Console.WriteLine($"Prompt: {prompt}");
         }
-        
-        
-        Console.WriteLine($"You listed {itemCount} items.");
-        
+
+        Console.WriteLine(" ");
+        Console.WriteLine($"Well done!, Here are the Itmes you listed:");
+        Console.WriteLine($"You listed {lines.Count} items:");
+        foreach (string item in lines)
+        {
+            Console.WriteLine(item);
+        }
+
         Finish();
     }
 }

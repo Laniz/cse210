@@ -35,10 +35,12 @@ class ReflectionActivity : MindfulnessActivity
 
         // Track the elapsed time
         int elapsedTime = 0;
+        
 
         // Loop until the duration is reached
         while (elapsedTime < duration)
         {
+            bool toggle = true;
             // Display a random question
             string question = questions[rand.Next(questions.Length)];
             Console.WriteLine(question);
@@ -46,8 +48,19 @@ class ReflectionActivity : MindfulnessActivity
             // Show spinner while pausing
             for (int i = 0; i < 5; i++)
             {
-                Console.Write(".");
-                Thread.Sleep(500);
+               
+                 if (toggle)
+            {
+                Console.Write("|");
+            }
+            else
+            {
+                Console.Write("-");
+            }
+
+            toggle = !toggle;
+            Thread.Sleep(1000);
+            Console.SetCursorPosition(Console.CursorLeft - 1, Console.CursorTop);
             }
             Console.WriteLine();
 

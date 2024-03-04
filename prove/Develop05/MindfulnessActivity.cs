@@ -17,9 +17,10 @@ class MindfulnessActivity
     public void Start()
     {
         
-        
+        Console.WriteLine(" ");
         Console.WriteLine($"Starting {GetType().Name} activity...");
         Console.WriteLine("Please prepare to begin.");
+        Console.WriteLine("  ");
 
 
 
@@ -30,7 +31,8 @@ class MindfulnessActivity
         {
             if (toggle)
             {
-                Console.Write("+");
+                Console.Write("|");
+                
             }
             else
             {
@@ -51,8 +53,9 @@ class MindfulnessActivity
     {
         stopwatch.Stop();
         long elapsedMilliseconds = stopwatch.ElapsedMilliseconds;
+        Console.WriteLine("\n");
         Console.WriteLine($"Well done! You have completed the {GetType().Name} activity.");
-        Console.WriteLine($"Activity duration: {elapsedMilliseconds / 1000} seconds.");
+        Console.WriteLine($"Total Activity duration, Including Menu Time: {elapsedMilliseconds / 1000} seconds.");
         Thread.Sleep(3000); // Pause for 3 seconds
     }
 }
