@@ -23,7 +23,7 @@ class Program
         switch (choice)
         {
             case 1:
-                DoBreathingActivity();
+                DoBreathing();
                 break;
             case 2:
                 DoReflectionActivity();
@@ -52,12 +52,12 @@ class Program
         }
     }
 
-    static void DoBreathingActivity()
-    {
-        int duration = GetDuration();
-        BreathingActivity breathingActivity = new BreathingActivity(duration);
-        breathingActivity.DoBreathing();
-    }
+    static void DoBreathing()
+{
+    int duration = GetDuration();
+    BreathingActivity breathingActivity = new BreathingActivity(duration);
+    breathingActivity.DoBreathing();
+}
 
     static void DoReflectionActivity()
     {
