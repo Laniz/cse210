@@ -3,14 +3,15 @@ using System;
 // Simple Goal class inheriting from Goal
 class SimpleGoal : Goal
 {
-    public string Description { get; set; }
-    public int Points { get; set; }
+    // public string Description { get; set; }
+    // public int Points { get; set; }
 
-    public SimpleGoal(int id, string name, string description, int points) : base(id, name)
-    {
-        Description = description;
-        Points = points;
-    }
+   public SimpleGoal(int id, string name, string description, int points) : base(id, name)
+{
+    Description = description;
+    Points = points;
+}
+
 
     public override void Complete()
     {
@@ -36,22 +37,22 @@ class SimpleGoal : Goal
         return new SimpleGoal(1, name, description, points);
     }
 
-    public static SimpleGoal ParseFromCustomFormat(string line)
-    {
-        string[] parts = line.Split(':');
-        if (parts.Length < 7) { return null; } 
+    // public static SimpleGoal ParseFromCustomFormat(string line)
+    // {
+    //     string[] parts = line.Split(':');
+    //     if (parts.Length < 7) { return null; } 
 
-        int goalId = int.Parse(parts[1].Trim());
-        string name = parts[2].Trim();
-        string description = parts[3].Trim();
-        int points = int.Parse(parts[4].Trim());
-        bool completed = bool.Parse(parts[5].Trim()); 
-        int timesCompleted = int.Parse(parts[6].Trim());
+    //     int goalId = int.Parse(parts[1].Trim());
+    //     string name = parts[2].Trim();
+    //     string description = parts[3].Trim();
+    //     int points = int.Parse(parts[4].Trim());
+    //     bool completed = bool.Parse(parts[5].Trim()); 
+    //     int timesCompleted = int.Parse(parts[6].Trim());
 
-        SimpleGoal goal = new SimpleGoal(goalId, name, description, points);
-        goal.InitializeFromSaveData(completed, timesCompleted);
-        return goal;
-    }
+    //     SimpleGoal goal = new SimpleGoal(goalId, name, description, points);
+    //     goal.InitializeFromSaveData(completed, timesCompleted);
+    //     return goal;
+    // }
 
     public override string ToCustomString() 
 {

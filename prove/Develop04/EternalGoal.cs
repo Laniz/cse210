@@ -1,13 +1,10 @@
 // Eternal Goal class
 public class EternalGoal : Goal  
 {
-    // Properties
-    public string Name { get; private set; }
-    public string Description { get; private set; }
-    public int Points { get; private set; }
+
 
     // Constructor
-    public EternalGoal(string name, string description, int points) : base(0, name) // GoalID can be arbitrary for Eternal
+    public EternalGoal(string name, string description, int points) : base(0, name)
     {
         Name = name;
         Description = description;
@@ -34,20 +31,20 @@ public class EternalGoal : Goal
     }
 
     // Method to parse from custom format 
-    public static EternalGoal ParseFromCustomFormat(string line)
-    {
-        string[] parts = line.Split(':');
+    // public static EternalGoal ParseFromCustomFormat(string line)
+    // {
+    //     string[] parts = line.Split(':');
 
-        if (parts.Length < 5) { 
-            return null; // Handle invalid format
-        }
+    //     if (parts.Length < 5) { 
+    //         return null; // Handle invalid format
+    //     }
 
-        string name = parts[1].Trim();
-        string description = parts[2].Trim();
-        int points = int.Parse(parts[3].Trim());
+    //     string name = parts[1].Trim();
+    //     string description = parts[2].Trim();
+    //     int points = int.Parse(parts[3].Trim());
 
-        return new EternalGoal(name, description, points); 
-    }
+    //     return new EternalGoal(name, description, points); 
+    // }
 
     public override string ToCustomString() 
 {

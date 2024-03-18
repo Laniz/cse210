@@ -32,14 +32,10 @@ class Program
                     case 4:
                         LoadGoals();
                         break;
-
                     case 5: 
-                    ReadGoalsFile(); 
-                    break;
-                    case 6: 
                         RecordEvent();
                         break;
-                    case 7:
+                    case 6:
                         quit = true;
                         Console.WriteLine("Goodbye!");
                         break;
@@ -145,13 +141,13 @@ class Program
         }
         Console.WriteLine("Goals saved successfully to " + filename); 
     }
-    catch (UnauthorizedAccessException ex)
+    catch (UnauthorizedAccessException)
     {
         Console.WriteLine("Error saving goals: Access Denied. Please try a different filename or location.");
     }
-    catch (IOException ex) 
+    catch (IOException) 
     {
-        Console.WriteLine("Error saving goals: " + ex.Message);  
+        Console.WriteLine("Error saving goals: ");  
     }
 }
 
@@ -211,50 +207,11 @@ class Program
     {
         Console.WriteLine("Select an option:");
         Console.WriteLine("1. Create New goal");
-        Console.WriteLine("2. List Goals");
+        Console.WriteLine("2. List Goals (not yet saved)");
         Console.WriteLine("3. Save Goals");
         Console.WriteLine("4. Load Goals Not yet saved");
         Console.WriteLine("5. Load Goals from saved file");
         Console.WriteLine("6. Record Event");
         Console.WriteLine("7. Quit");
     }
-
-    static void ReadGoalsFile()
-{
-    Console.Write("Enter the filename of your goals file: ");
-    string filename = Console.ReadLine();
-
-    // Optional: Add default extension if not provided 
-    if (!filename.EndsWith(".txt"))
-    {
-        filename += ".txt"; 
-    }
-
-    // Specify a default location to look for saved files
-    string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), filename);
-
-    if (File.Exists(filePath))
-    {
-        try
-        {
-            using (StreamReader reader = new StreamReader(filePath))
-            {
-                string line;
-                while ((line = reader.ReadLine()) != null)
-                {
-                    Console.WriteLine(line);
-                }
-            }
-        }
-        catch (IOException ex)
-        {
-            Console.WriteLine("Error reading goals file: " + ex.Message); 
-        }
-    }
-    else
-    {
-        Console.WriteLine("File not found.");
-    }
-}
-
 }

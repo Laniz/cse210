@@ -2,8 +2,7 @@ using System;
 
 class ChecklistGoal : Goal
 {
-    public string Description { get; set; }
-    public int Points { get; set; }
+
     public int TargetCount { get; set; }
     public int Bonus { get; set; }
 
@@ -61,20 +60,20 @@ class ChecklistGoal : Goal
         return new ChecklistGoal(1, name, description, points, targetCount, bonus);
     }
 
-    public static ChecklistGoal ParseFromCustomFormat(string line)
-    {
-        string[] parts = line.Split(':');
-        if (parts.Length < 7) { return null; } // Handle invalid format
+    // public static ChecklistGoal ParseFromCustomFormat(string line)
+    // {
+    //     string[] parts = line.Split(':');
+    //     if (parts.Length < 7) { return null; } // Handle invalid format
 
-        int goalId = int.Parse(parts[1].Trim());
-        string name = parts[2].Trim();
-        string description = parts[3].Trim();
-        int points = int.Parse(parts[4].Trim());
-        int targetCount = int.Parse(parts[5].Trim());  
-        int bonus = int.Parse(parts[6].Trim());
+    //     int goalId = int.Parse(parts[1].Trim());
+    //     string name = parts[2].Trim();
+    //     string description = parts[3].Trim();
+    //     int points = int.Parse(parts[4].Trim());
+    //     int targetCount = int.Parse(parts[5].Trim());  
+    //     int bonus = int.Parse(parts[6].Trim());
 
-        return new ChecklistGoal(goalId, name, description, points, targetCount, bonus);
-    }
+    //     return new ChecklistGoal(goalId, name, description, points, targetCount, bonus);
+    // }
 
     public override string ToCustomString() 
 {
