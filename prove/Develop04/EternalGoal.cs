@@ -49,7 +49,7 @@ public class EternalGoal : Goal
     public override string ToCustomString() 
 {
     string output = $"GoalType: EternalGoal\n"; 
-    output += $"GoalID: {GoalID}\n"; // Assuming you have a GoalID 
+    output += $"GoalID: {GoalID}\n"; // 
     output += $"Name: {Name}\n";
     output += $"Description: {Description}\n";
     output += $"Points: {Points}\n";

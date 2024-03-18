@@ -3,8 +3,21 @@ using System.IO; // For file I/O
 
 class Program
 {
+    private static List<Player> players = new List<Player>();
+
+    // private static List<Player> players = new List<Player>();
+    //  players.Add(new Player(1, "Default Player")); // Initialize with default player
+     private static Player currentPlayer;
     static List<Goal> goals = new List<Goal>();
-    static Player player = new Player(1, "John"); 
+    
+
+    
+    
+
+    
+
+    
+    // static Player player = new Player(1, "John"); 
     // private static int nextGoalId = 1; 
     // private static List<Goal> newGoals = new List<Goal>(); 
 
@@ -35,7 +48,42 @@ class Program
                     case 5: 
                         RecordEvent();
                         break;
-                    case 6:
+
+                    case 6: // Create new player
+                        Console.Write("Enter player name: ");
+                        string name = Console.ReadLine();
+                        int playerId = GetNextPlayerId(); // Assuming you have a function to generate IDs
+                        Player newPlayer = new Player(playerId, name);
+                        players.Add(newPlayer);
+                        Console.WriteLine("Player created successfully!");
+
+                    
+                        break;
+
+                    case 7: // Select existing player
+                        if (players.Count == 0)
+                        {
+                            Console.WriteLine("No players found. Please create a player first.");
+                        } 
+                        else
+                        {
+                            Console.WriteLine("Select a player:");
+                            for (int i = 0; i < players.Count; i++)
+                            {
+                                Console.WriteLine($"{i + 1}. {players[i].Name}");
+                            }
+
+                            int playerChoice;
+                            while (!int.TryParse(Console.ReadLine(), out playerChoice) || playerChoice < 1 || playerChoice > players.Count)
+                            {
+                                Console.WriteLine("Invalid choice. Please enter a number from the list.");
+                            }
+
+                            currentPlayer = players[playerChoice - 1]; 
+                            Console.WriteLine($"Player {currentPlayer.Name} selected.");
+                    }
+                    break;
+                    case 8:
                         quit = true;
                         Console.WriteLine("Goodbye!");
                         break;
@@ -147,7 +195,7 @@ class Program
     }
     catch (IOException) 
     {
-        Console.WriteLine("Error saving goals: ");  
+        Console.WriteLine("Error saving goals ");  
     }
 }
 
@@ -157,13 +205,13 @@ class Program
     Console.Write("Enter the filename of your saved goals: ");
     string filename = Console.ReadLine();
 
-    // Optional: Add default extension if not provided 
+     
     if (!filename.EndsWith(".txt"))
     {
         filename += ".txt";
     }
 
-    // Specify a default location to look for saved files
+    
     string loadPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), filename);
 
     if (File.Exists(loadPath))
@@ -203,6 +251,14 @@ class Program
         // ... (Add code to record an event) ...
     }
 
+    private static int GetNextPlayerId()
+{
+    if (players.Count == 0) { return 1; } // Start from 1 if no players exist
+
+    // Get the maximum existing ID and add 1
+    return players.Max(p => p.PlayerID) + 1; 
+}
+
     static void DisplayMenu()
     {
         Console.WriteLine("Select an option:");
@@ -210,8 +266,9 @@ class Program
         Console.WriteLine("2. List Goals (not yet saved)");
         Console.WriteLine("3. Save Goals");
         Console.WriteLine("4. Load Goals");
-    
         Console.WriteLine("5. Record Event");
-        Console.WriteLine("6. Quit");
+        Console.WriteLine("6. Add player");
+        Console.WriteLine("7. Select player");
+        Console.WriteLine("8. Quit");
     }
 }
