@@ -209,9 +209,9 @@ class Program
         Console.WriteLine("1. Create New goal");
         Console.WriteLine("2. List Goals (not yet saved)");
         Console.WriteLine("3. Save Goals");
-        Console.WriteLine("4. Load Goals Not yet saved");
-        Console.WriteLine("5. Load Goals from saved file");
-        Console.WriteLine("6. Record Event");
-        Console.WriteLine("7. Quit");
+        Console.WriteLine("4. Load Goals");
+    
+        Console.WriteLine("5. Record Event");
+        Console.WriteLine("6. Quit");
     }
 }
