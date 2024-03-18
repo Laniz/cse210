@@ -5,8 +5,8 @@ class Program
 {
     static List<Goal> goals = new List<Goal>();
     static Player player = new Player(1, "John"); 
-    private static int nextGoalId = 1; 
-    private static List<Goal> newGoals = new List<Goal>(); 
+    // private static int nextGoalId = 1; 
+    // private static List<Goal> newGoals = new List<Goal>(); 
 
     static void Main(string[] args)
     {
