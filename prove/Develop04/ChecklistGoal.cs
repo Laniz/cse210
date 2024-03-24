@@ -11,6 +11,17 @@ class ChecklistGoal : Goal
         this.requiredTimes = requiredTimes;
     }
 
+
+    public int TimesCompleted 
+    { 
+        get { return timesCompleted; }
+        set { timesCompleted = value; } 
+    }
+    public int RequiredTimes 
+    { 
+        get { return requiredTimes; } 
+    }
+
     public override void RecordEvent()
     {
         timesCompleted++;

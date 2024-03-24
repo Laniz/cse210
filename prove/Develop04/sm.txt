@@ -1,0 +1,3 @@
+simp01,20,True,SimpleGoal
+Eternal01,20,False,EternalGoal
+checklist01,20,False,ChecklistGoal,1,3
