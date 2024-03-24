@@ -1,10 +1,10 @@
 
 class SimpleGoal : Goal
 {
-    public SimpleGoal(string name, int value)
+    public SimpleGoal(string name, int value) : base(name, value)
     {
-        Name = name;
-        Value = value;
+        // Name = name;
+        // Value = value;
     }
 
     public override bool IsComplete()

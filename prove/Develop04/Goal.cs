@@ -4,6 +4,8 @@ class Goal
     public string Name { get; set; }
     public int Value { get; protected set; }
 
+    
+
     public virtual void RecordEvent()
     {
         Console.WriteLine($"Goal '{Name}' completed! You gained {Value} points.");
@@ -18,4 +20,11 @@ class Goal
     {
         return false;
     }
+    public Goal(string name, int value)
+{
+    Name = name;
+    Value = value;
+}
+
+    
 }

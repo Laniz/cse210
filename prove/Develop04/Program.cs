@@ -1,3 +1,5 @@
+using System.IO;
+
 class Program
 {
     static void Main()
@@ -10,7 +12,9 @@ class Program
             Console.WriteLine("1. Add Goal");
             Console.WriteLine("2. Record Event");
             Console.WriteLine("3. Display Goals");
-            Console.WriteLine("4. Exit");
+            Console.WriteLine("4. Load Goals");
+            Console.WriteLine("5. Save Goals");
+            Console.WriteLine("6. Exit");
 
             string choice = Console.ReadLine();
 
@@ -64,6 +68,14 @@ class Program
                     break;
 
                 case "4":
+                    goalManager.LoadGoals();
+                    break;
+
+                case "5":
+                    goalManager.SaveGoals();
+                    break;
+
+                case "6":
                     return;
 
                 default:

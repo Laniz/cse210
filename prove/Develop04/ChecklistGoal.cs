@@ -4,7 +4,7 @@ class ChecklistGoal : Goal
     private int timesCompleted;
     private int requiredTimes;
 
-    public ChecklistGoal(string name, int value, int requiredTimes)
+    public ChecklistGoal(string name, int value, int requiredTimes) : base(name, value)
     {
         Name = name;
         Value = value;
